@@ -36,4 +36,3 @@ export interface Project {
     current_version_index: string;
 }
 
-div
