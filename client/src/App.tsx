@@ -7,6 +7,9 @@ import Preview from "./pages/Preview"
 import Community from "./pages/Community"
 import View from "./pages/View"
 import Navbar from "./components/Navbar"
+import { Toaster } from 'sonner'
+import AuthPage from "./pages/auth/AuthPage"
+import Settings from "./pages/Settings"
 
 
 const App = () => {
@@ -19,6 +22,7 @@ const App = () => {
 
   return (
     <div>
+      <Toaster/>
       {!hideNavbar && <Navbar/>}
       
       <Routes>
@@ -30,6 +34,8 @@ const App = () => {
         <Route path='/preview/:projectId/:versionId' element={<Preview />} />
         <Route path='/community' element={<Community />} />
         <Route path='/View' element={<View />} />  
+        <Route path="/auth/:pathname" element={<AuthPage />} />
+        <Route path="/account/settings" element={<Settings/>} />
       </Routes>
     </div>
   )
