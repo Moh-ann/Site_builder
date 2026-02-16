@@ -15,11 +15,14 @@ const Preview = () => {
   const [loading, setLoading] = useState(true);
 
   const fetchCode = async () => {
+    if(!projectId) return;
     try {
+      setLoading(true);
+      
       const { data } = await api.get(`/api/project/preview/${projectId}`)
       setCode(data.project.current_code)
       if(versionId){
-        data.project.versions.forEach((version: Version)=>{
+        data.project.versions?.forEach((version: Version)=>{
           if(version.id === versionId){
             setCode(version.code)
           }
@@ -33,10 +36,11 @@ const Preview = () => {
   }
 
   useEffect(()=>{
+    if(!projectId) return;
     if(!isPending && session?.user){
     fetchCode()
     }
-  },[session?.user])
+  },[session?.user, projectId, versionId])
 
   if(loading){
     return (

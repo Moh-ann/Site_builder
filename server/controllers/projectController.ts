@@ -260,7 +260,7 @@ export const deleteProject = async (req: Request, res: Response) => {
 export const getProjectPreview = async (req: Request, res: Response) => {
     try {
         const userId = req.userId;
-        const { projectId} = req. params;
+        const { projectId} = req.params;
 
         if (typeof projectId !== 'string') {
             return res.status(400).json({ message: 'Invalid project id' });
